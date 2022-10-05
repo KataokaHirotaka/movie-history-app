@@ -9,10 +9,12 @@ const GlobalStyle = createGlobalStyle`
   textarea {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
-  * {
+  *,::before,::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
 
