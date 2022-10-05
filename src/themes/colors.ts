@@ -3,7 +3,7 @@ const colors = {
   headerTxt: '#e5e5e5',
   headerTxtHover: '#b3b3b3',
   white: '#fff',
-  gray: '#777',
+  gray: '#808080',
   black: '#333',
   red: '#E51F13',
 } as const
