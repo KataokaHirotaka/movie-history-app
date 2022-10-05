@@ -6,12 +6,17 @@ export const Header = () => {
 
   return (
     <StyleHeader>
-      <StyleTitle>タイトル保留</StyleTitle>
+      <StyleTitle>タイトル</StyleTitle>
       <Hamburger className={isActive ? 'active' : ''} onClick={handleClick}>
         <span></span>
       </Hamburger>
       <GlobalNav className={isActive ? 'active' : ''}>
-        <p>faaaa</p>
+        <NavList>
+          <li><a href="">映画</a></li>
+          <li><a href="">映画</a></li>
+          <li><a href="">映画</a></li>
+          <li><a href="">映画</a></li>
+        </NavList>
       </GlobalNav>
     </StyleHeader>
   )
@@ -94,6 +99,10 @@ const Hamburger = styled.button`
       }
     }
   `}
+
+  ${({ theme }) => theme.breakpoint.md`
+    display: none;
+  `}
 `
 
 const GlobalNav = styled.nav`
@@ -116,4 +125,28 @@ const GlobalNav = styled.nav`
 			transform: translateX(0);
 		}
 	`}
+
+  ${({ theme }) => theme.breakpoint.md`
+    
+  `}
+`
+const NavList = styled.ul`
+    ${({ theme }) => theme.breakpoint.base`
+      padding-top: 80px;
+
+      li {
+        text-align: center;
+        a {
+          display: inline-block;
+          width: 90%;
+          padding: 10px 0;
+          color: ${theme.colors.gray};
+          transition: .3s ease-in-out;
+
+          &:hover {
+            color: ${theme.colors.white};
+          }
+        }
+      }
+    `}
 `
