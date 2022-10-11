@@ -1,23 +1,26 @@
 import styled from 'styled-components'
 import { useIsActive } from '~/src/hooks/useIsActive'
+import { NavItem } from './NavItem'
 
 export const Header = () => {
   const [isActive, handleClick] = useIsActive()
 
   return (
     <StyleHeader>
-      <StyleTitle>タイトル</StyleTitle>
-      <Hamburger className={isActive ? 'active' : ''} onClick={handleClick}>
-        <span></span>
-      </Hamburger>
-      <GlobalNav className={isActive ? 'active' : ''}>
-        <NavList>
-          <li><a href="">映画</a></li>
-          <li><a href="">映画</a></li>
-          <li><a href="">映画</a></li>
-          <li><a href="">映画</a></li>
-        </NavList>
-      </GlobalNav>
+      <HeaderInner>
+        <StyleTitle>MovieHistory</StyleTitle>
+        <Hamburger className={isActive ? 'active' : ''} onClick={handleClick}>
+          <span></span>
+        </Hamburger>
+        <HeaderList>
+          <NavItem></NavItem>
+        </HeaderList>
+        <GlobalNav className={isActive ? 'active' : ''}>
+          <NavList>
+            <NavItem></NavItem>
+          </NavList>
+        </GlobalNav>
+      </HeaderInner>
     </StyleHeader>
   )
 }
@@ -25,18 +28,33 @@ export const Header = () => {
 /**
  * style定義
  */
+
 const StyleHeader = styled.header`
   ${({ theme }) => theme.breakpoint.base`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 		position: fixed;
 		top: 0;
 		left: 0;
 		z-index: ${theme.zindex.header};
 		width: 100vw;
-    padding: 5px 10px;
+    padding: 5px ${theme.contents.base};
     background-color: ${theme.colors.background};
+  `}
+
+  ${({ theme }) => theme.breakpoint.md`
+    padding: 5px ${theme.contents.md};
+  `}
+`
+
+const HeaderInner = styled.div`
+  ${({ theme }) => theme.breakpoint.base`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  `}
+  ${({ theme }) => theme.breakpoint.lg`
+    max-width: ${theme.contents.maxWidth};
+    margin: 0 auto;
   `}
 `
 const StyleTitle = styled.h1`
@@ -117,7 +135,7 @@ const GlobalNav = styled.nav`
 		background: ${theme.colors.background};
 		pointer-events: none;
 		transform: translateX(100%);
-		transition: .3s ease-in-out;
+		transition: transform .3s ease-in-out, visibility .3s ease-in-out;
 
 		&.active {
 			visibility: visible;
@@ -125,28 +143,44 @@ const GlobalNav = styled.nav`
 			transform: translateX(0);
 		}
 	`}
-
-  ${({ theme }) => theme.breakpoint.md`
-    
-  `}
 `
 const NavList = styled.ul`
-    ${({ theme }) => theme.breakpoint.base`
-      padding-top: 80px;
-
-      li {
-        text-align: center;
-        a {
-          display: inline-block;
-          width: 90%;
-          padding: 10px 0;
-          color: ${theme.colors.gray};
-          transition: .3s ease-in-out;
-
-          &:hover {
-            color: ${theme.colors.white};
-          }
+  ${({ theme }) => theme.breakpoint.base`
+    padding-top: 80px;
+    li {
+      text-align: center;
+      a {
+        display: inline-block;
+        width: 90%;
+        padding: 10px 0;
+        color: ${theme.colors.gray};
+        transition: color .3s ease-in-out;
+        &:hover {
+          color: ${theme.colors.white};
         }
       }
-    `}
+    }
+  `}
+`
+const HeaderList = styled.ul`
+  ${({ theme }) => theme.breakpoint.base`
+    display: none;
+  `}
+  ${({ theme }) => theme.breakpoint.md`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 100%;
+    padding-top: 0px;
+    li {
+      width: 20%;
+      a {
+        color: ${theme.colors.white}
+      }
+    }
+  `}
 `
