@@ -1,3 +1,5 @@
-export type Props = {
-  children: React.ReactNode
+export type layoutProps = {
+  children?: React.ReactNode
+  title?: string
+  description?: string
 }

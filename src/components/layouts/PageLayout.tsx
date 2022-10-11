@@ -1,10 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
-import { Header } from '../elements/Header'
 import { layoutProps } from '~/src/types'
+import { Header } from '../elements/Header'
 import styled from 'styled-components'
 
-export const HomeLayout = ({ title, description, children }: layoutProps) => {
+export const PageLayout = ({ title, description, children }: layoutProps) => {
   return (
     <>
       <Head>
@@ -24,7 +24,7 @@ export const HomeLayout = ({ title, description, children }: layoutProps) => {
 
 const Main = styled.main`
   ${({ theme }) => theme.breakpoint.base`
-   // padding: 47px ${theme.space[2]} 0;
+  // padding: 47px ${theme.space[2]} 0;
     max-width: ${theme.contents.maxWidth};
     margin: 0 auto;
     padding: 50px ${theme.contents.base} 0;
