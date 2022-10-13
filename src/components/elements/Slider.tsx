@@ -5,6 +5,7 @@ import { sliderProps } from '~/src/types'
 export const Slider = ({ url }: sliderProps) => {
   const { data, isLoading, isError } = useTMDBDataSWR(url)
   console.log(data)
+  console.log(isLoading)
 
   return <div>Slider</div>
 }
