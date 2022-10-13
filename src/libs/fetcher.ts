@@ -1,5 +1,12 @@
-export const fetcher = async (url: string) => {
-  console.log(url, 'uuuuuuuuuu')
+function sleep(msec: number) {
+  return new Promise(resolve => {
+    setTimeout(resolve, msec)
+  })
+}
 
-  fetch(url).then(res => res.json())
+export const fetcher = (url: string) => {
+  fetch(url).then(res => {
+    sleep(5000)
+    res.json()
+  })
 }
