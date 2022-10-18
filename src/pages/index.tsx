@@ -5,11 +5,9 @@ import { HomeLayout } from '../components/layouts/HomeLayout'
 import { urls } from '../data'
 
 const Home: NextPage = () => {
-  const popularMovieUrl: string = urls.popularMovie
-
   return (
     <HomeLayout title="MovieHistory" description="あなたの映画">
-      <Slider url={popularMovieUrl}></Slider>
+      <Slider url={urls.default}></Slider>
     </HomeLayout>
   )
 }
